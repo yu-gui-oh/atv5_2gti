@@ -1,0 +1,8 @@
+{
+    "name": "atv5_2gti",
+    "version": "1.0.0",
+    "keywords": ["util", "functional", "server", "client", "browser"],
+    "author": "mats_",
+    "contributors": [],
+    "dependencies": {}
+}

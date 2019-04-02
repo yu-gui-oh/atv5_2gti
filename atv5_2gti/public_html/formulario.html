@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Crie sua conta</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <link href="estiloscss.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="js/localization/messages_pt_BR.min.js" type="text/javascript"></script>
+        <script src="js/jquery.mask.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+//                0 -> numero obrigatorio
+//                9 -> numero opcional
+                $("#cpf").mask("000.000.000-00")
+            })
+
+            jQuery.validator.addMethod("veia", function (value, element) {
+                if (value.toLowerCase().indexOf("véia") == -1) {
+                    return false
+                } else {
+                    return true
+                }
+            }, "Tem que ter 'véia' no nome!")
+
+            $(document).ready(function () {
+                $("#formulario").validate({
+                    rules: {
+                        nome: {
+                            required: true,
+                            minWords: 2,
+                            minlength: 10,
+                            maxlength: 100
+                        },
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        cpf: {
+                            required: true,
+                            cpfBR: true
+                        },
+                        prof: {
+                            required: true,
+                            minWords: 2,
+                            veia: true
+                        },
+                        nasc: {
+                            required: true
+                        }
+                    }, submitHandler: function (form) {
+                        alert("Cadastrado com sucesso!")
+                    }
+                })
+            })
+        </script> 
+        <style type="text/css">
+            /*muda cor dos erros*/
+            .error{
+                color: #ff0000;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="cabec" class="col-sm-6 col-xs-12">
+                    <h4>Registre aqui sua conta e comece a jogar!</h4>
+                </div>
+                <div id="subc" class="col-sm-6 col-xs-12">
+                </div>
+            </div>
+            <div class="row">
+                <div id="corpoform" class="col-12">   
+                    <div class="container">
+                        <form name="formulario" id="formulario" action="" method="post">
+                            <br />
+                            <div class="form-group">
+                                <label>Nome completo</label>
+                                <input type="text" name="nome" id="nome" placeholder="Tijolinho Batatôncio" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail</label>    
+                                <input type="text" name="email" id="email" placeholder="batata@batatamail.com" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>CPF</label>
+                                <input type="text" name="cpf" id="cpf" placeholder="000.000.000-0" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Nome da primeira professora</label>
+                                <input type="text" name="prof" id="prof" placeholder="Professora Véia" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Data de nascimento</label>
+                                <input type="date" name="nasc" id="nasc"  class="form-control" />
+                            </div>
+                            <br />
+                            <!--<div class="row">-->
+                            <input type="submit" value="Registrar" class="btn btn-primary form-control" />
+                            <!--</div>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="subc2" class="col-sm-6 col-xs-12">
+                </div>
+                <div id="baixodois" class="col-sm-6 col-xs-12">                       
+                    <a href="index.html"><h4 class="linke">Conheça o jogo</h4></a>
+                    <a href="pag3.html"><h4 class="linke">Sobre a História</h4></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
